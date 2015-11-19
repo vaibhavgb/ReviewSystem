@@ -1,0 +1,1 @@
+create table product (prId int PRIMARY KEY AUTO_INCREMENT, prName varchar(20) NOT NULL ,prDsc varchar(20), prPrice int NOT NULL); 

@@ -1,0 +1,112 @@
+MariaDB [rwsSys]> create table reviews (rid int PRIMARY KEY AUTO_INCREMENT,review varchar(250) NOT NULL, ratings char(1) NOT NULL, rdate timestamp NOT NULL,rvrName varchar(20) NOT NULL, rvrEmail  productId int NOT NULL, helpfull int, notHelpfull int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'productId int NOT NULL, helpfull int, notHelpfull int)' at line 1
+MariaDB [rwsSys]> create table reviews (rid int PRIMARY KEY AUTO_INCREMENT,review varchar(250) NOT NULL, ratings char(1) NOT NULL, rdate timestamp NOT NULL,rvrName varchar(20) NOT NULL, rvrEmail varchar(100) NOT NULL, productId int NOT NULLREFERANCE product(prId), helpfull int, notHelpfull int );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULLREFERANCE product(prId), helpfull int, notHelpfull int )' at line 1
+MariaDB [rwsSys]> create table reviews (rid int PRIMARY KEY AUTO_INCREMENT,review varchar(250) NOT NULL, ratings char(1) NOT NULL, rdate timestamp NOT NULL,rvrName varchar(20) NOT NULL, rvrEmail varchar(100) NOT NULL, productId int NOT NULLREFRENCE product(prId), helpfull int, notHelpfull int );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULLREFRENCE product(prId), helpfull int, notHelpfull int )' at line 1
+MariaDB [rwsSys]> create table reviews (rid int PRIMARY KEY AUTO_INCREMENT,review varchar(250) NOT NULL, ratings char(1) NOT NULL, rdate timestamp NOT NULL,rvrName varchar(20) NOT NULL, rvrEmail varchar(100) NOT NULL, productId int NOT NULLFOREIGN KEY REFRENCE product(prId), helpfull int, notHelpfull int );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULLFOREIGN KEY REFRENCE product(prId), helpfull int, notHelpfull int )' at line 1
+MariaDB [rwsSys]> create table reviews (rid int PRIMARY KEY AUTO_INCREMENT,review varchar(250) NOT NULL, ratings char(1) NOT NULL, rdate timestamp NOT NULL,rvrName varchar(20) NOT NULL, rvrEmail varchar(100) NOT NULL, productId int NOT NULL, helpfull int, notHelpfull int FOREIGN KEY(productId) REFERENCES product(prid) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FOREIGN KEY(productId) REFERENCES product(prid) )' at line 1
+MariaDB [rwsSys]> create table reviews (rid int PRIMARY KEY AUTO_INCREMENT,review varchar(250) NOT NULL, ratings char(1) NOT NULL, rdate timestamp NOT NULL,rvrName varchar(20) NOT NULL, rvrEmail varchar(100) NOT NULL, pId int NOT NULL, helpfull int, notHelpfull int, FOREIGN KEY(pId) REFERENCES product(prid) );
+Query OK, 0 rows affected (0.08 sec)
+
+MariaDB [rwsSys]> ls
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ls' at line 1
+MariaDB [rwsSys]> desc product;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| prId    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| prName  | varchar(20) | NO   |     | NULL    |                |
+| prDsc   | varchar(20) | YES  |     | NULL    |                |
+| prPrice | int(11)     | NO   |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+MariaDB [rwsSys]> desc reviews
+    -> ;
++-------------+--------------+------+-----+-------------------+-----------------------------+
+| Field       | Type         | Null | Key | Default           | Extra                       |
++-------------+--------------+------+-----+-------------------+-----------------------------+
+| rid         | int(11)      | NO   | PRI | NULL              | auto_increment              |
+| review      | varchar(250) | NO   |     | NULL              |                             |
+| ratings     | char(1)      | NO   |     | NULL              |                             |
+| rdate       | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| rvrName     | varchar(20)  | NO   |     | NULL              |                             |
+| rvrEmail    | varchar(100) | NO   |     | NULL              |                             |
+| pId         | int(11)      | NO   | MUL | NULL              |                             |
+| helpfull    | int(11)      | YES  |     | NULL              |                             |
+| notHelpfull | int(11)      | YES  |     | NULL              |                             |
++-------------+--------------+------+-----+-------------------+-----------------------------+
+9 rows in set (0.00 sec)
+
+MariaDB [rwsSys]> desc reviews;
++-------------+--------------+------+-----+-------------------+-----------------------------+
+| Field       | Type         | Null | Key | Default           | Extra                       |
++-------------+--------------+------+-----+-------------------+-----------------------------+
+| rid         | int(11)      | NO   | PRI | NULL              | auto_increment              |
+| review      | varchar(250) | NO   |     | NULL              |                             |
+| ratings     | char(1)      | NO   |     | NULL              |                             |
+| rdate       | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| rvrName     | varchar(20)  | NO   |     | NULL              |                             |
+| rvrEmail    | varchar(100) | NO   |     | NULL              |                             |
+| pId         | int(11)      | NO   | MUL | NULL              |                             |
+| helpfull    | int(11)      | YES  |     | NULL              |                             |
+| notHelpfull | int(11)      | YES  |     | NULL              |                             |
++-------------+--------------+------+-----+-------------------+-----------------------------+
+9 rows in set (0.00 sec)
+
+MariaDB [rwsSys]> desc product;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| prId    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| prName  | varchar(20) | NO   |     | NULL    |                |
+| prDsc   | varchar(20) | YES  |     | NULL    |                |
+| prPrice | int(11)     | NO   |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+MariaDB [rwsSys]> insert into product values (008, SONY, mdr360 wireless, 5000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'wireless, 5000)' at line 1
+MariaDB [rwsSys]> insert into product values (008, 'SONY', 'mdr360 wireless', 5000);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [rwsSys]> insert into product values ( 'BOSE', 'fx770 wireless', 30000);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [rwsSys]> insert into product values ( ,'BOSE', 'fx770 wireless', 30000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''BOSE', 'fx770 wireless', 30000)' at line 1
+MariaDB [rwsSys]> insert into product values (9,'BOSE', 'fx770 wireless', 30000);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [rwsSys]> insert into product values (10,'PHILIPS', '112 wired', 2000);
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [rwsSys]> select * from product;
++------+---------+-----------------+---------+
+| prId | prName  | prDsc           | prPrice |
++------+---------+-----------------+---------+
+|    8 | SONY    | mdr360 wireless |    5000 |
+|    9 | BOSE    | fx770 wireless  |   30000 |
+|   10 | PHILIPS | 112 wired       |    2000 |
++------+---------+-----------------+---------+
+3 rows in set (0.00 sec)
+
+MariaDB [rwsSys]> alter table review add spam int NOT NULL;
+ERROR 1146 (42S02): Table 'rwsSys.review' doesn't exist
+MariaDB [rwsSys]> alter table reviews add spam int NOT NULL;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [rwsSys]> select * from product where prId=8;
++------+--------+-----------------+---------+
+| prId | prName | prDsc           | prPrice |
++------+--------+-----------------+---------+
+|    8 | SONY   | mdr360 wireless |    5000 |
++------+--------+-----------------+---------+
+1 row in set (0.00 sec)
+
+MariaDB [rwsSys]> Ctrl-C -- exit!
+Aborted
